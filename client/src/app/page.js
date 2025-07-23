@@ -35,7 +35,7 @@ export default function Home() {
           <NewArrivals />
           <Banner2 />
           <ExpertChoice />
-          <NicheExplorer />
+          {/* <NicheExplorer /> */}
           <Trending />
           <Banner3 />
         </main>

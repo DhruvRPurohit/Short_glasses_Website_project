@@ -1,4 +1,4 @@
-/* internal import */
+
 const productService = require("../services/product.service");
 
 /* add new product */
