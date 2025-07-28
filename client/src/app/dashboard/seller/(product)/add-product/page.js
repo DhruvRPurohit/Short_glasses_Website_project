@@ -4,9 +4,9 @@
 import Minus from "@/components/icons/Minus";
 import Plus from "@/components/icons/Plus";
 import Dashboard from "@/components/shared/layouts/Dashboard";
-import useGetColors from "@/libs/useGetColors";
-import { useGetBrandsQuery } from "@/services/brand/brandApi";
-import { useGetCategoriesQuery } from "@/services/category/categoryApi";
+// import useGetColors from "@/libs/useGetColors";
+// import { useGetBrandsQuery } from "@/services/brand/brandApi";
+// import { useGetCategoriesQuery } from "@/services/category/categoryApi";
 import { useAddProductMutation } from "@/services/product/productApi";
 import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
@@ -37,21 +37,21 @@ const Page = () => {
     addProduct,
     { isLoading: addingProduct, data: addProductData, error: addProductError },
   ] = useAddProductMutation();
-  const {
-    isLoading: fetchingBrands,
-    data: fetchBrandsData,
-    error: fetchBrandsError,
-  } = useGetBrandsQuery();
-  const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
-  const {
-    isLoading: fetchingCategories,
-    data: fetchCategoriesData,
-    error: fetchCategoriesError,
-  } = useGetCategoriesQuery();
-  const categories = useMemo(
-    () => fetchCategoriesData?.data || [],
-    [fetchCategoriesData]
-  );
+  // const {
+  //   isLoading: fetchingBrands,
+  //   data: fetchBrandsData,
+  //   error: fetchBrandsError,
+  // } = useGetBrandsQuery();
+  // const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
+  // const {
+  //   isLoading: fetchingCategories,
+  //   data: fetchCategoriesData,
+  //   error: fetchCategoriesError,
+  // } = useGetCategoriesQuery();
+  // const categories = useMemo(
+  //   () => fetchCategoriesData?.data || [],
+  //   [fetchCategoriesData]
+  // );
 
   /* visible states in toast */
   useEffect(() => {
@@ -73,43 +73,43 @@ const Page = () => {
       toast.error(addProductError?.data?.description, { id: "addProduct" });
     }
 
-    if (fetchingBrands) {
-      toast.loading("Fetching Brands...", { id: "fetchBrands" });
-    }
+    // if (fetchingBrands) {
+    //   toast.loading("Fetching Brands...", { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsData) {
-      toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsData) {
+    //   toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsError) {
-      toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsError) {
+    //   toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchingCategories) {
-      toast.loading("Fetching Categories...", { id: "fetchCategories" });
-    }
+    // if (fetchingCategories) {
+    //   toast.loading("Fetching Categories...", { id: "fetchCategories" });
+    // }
 
-    if (fetchCategoriesData) {
-      toast.success(fetchCategoriesData?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesData) {
+    //   toast.success(fetchCategoriesData?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
 
-    if (fetchCategoriesError) {
-      toast.error(fetchCategoriesError?.data?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesError) {
+    //   toast.error(fetchCategoriesError?.data?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
   }, [
     addingProduct,
     addProductData,
     addProductError,
-    fetchingBrands,
-    fetchBrandsData,
-    fetchBrandsError,
-    fetchingCategories,
-    fetchCategoriesData,
-    fetchCategoriesError,
+    // fetchingBrands,
+    // fetchBrandsData,
+    // fetchBrandsError,
+    // fetchingCategories,
+    // fetchCategoriesData,
+    // fetchCategoriesError,
   ]);
 
   /* handle thumbnail preview */

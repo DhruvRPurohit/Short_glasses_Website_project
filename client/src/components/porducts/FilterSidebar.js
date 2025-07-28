@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on FilterSidebar
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 04, November 2023
- */
+
 
 "use client";
 
@@ -33,21 +20,21 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const FilterSidebar = () => {
-  const {
-    data: brandsData,
-    error: brandsError,
-    isLoading: brandsLoading,
-  } = useGetBrandsQuery();
-  const {
-    data: categoriesData,
-    error: categoriesError,
-    isLoading: categoriesLoading,
-  } = useGetCategoriesQuery();
-  const {
-    data: storesData,
-    error: storesError,
-    isLoading: storesLoading,
-  } = useGetStoresQuery();
+  // const {
+  //   data: brandsData,
+  //   error: brandsError,
+  //   isLoading: brandsLoading,
+  // } = useGetBrandsQuery();
+  // const {
+  //   data: categoriesData,
+  //   error: categoriesError,
+  //   isLoading: categoriesLoading,
+  // } = useGetCategoriesQuery();
+  // const {
+  //   data: storesData,
+  //   error: storesError,
+  //   isLoading: storesLoading,
+  // } = useGetStoresQuery();
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -58,25 +45,25 @@ const FilterSidebar = () => {
   const category = searchParams.get("category");
   const store = searchParams.get("store");
 
-  const brands = brandsData?.data || [];
-  const categories = categoriesData?.data || [];
-  const stores = storesData?.data || [];
+  // const brands = brandsData?.data || [];
+  // const categories = categoriesData?.data || [];
+  // const stores = storesData?.data || [];
 
-  useEffect(() => {
-    if (brandsError?.data) {
-      toast.error(brandsError?.data?.description, { id: "brands-data" });
-    }
+  // useEffect(() => {
+  //   if (brandsError?.data) {
+  //     toast.error(brandsError?.data?.description, { id: "brands-data" });
+  //   }
 
-    if (categoriesError?.data) {
-      toast.error(categoriesError?.data?.description, {
-        id: "categories-data",
-      });
-    }
+  //   if (categoriesError?.data) {
+  //     toast.error(categoriesError?.data?.description, {
+  //       id: "categories-data",
+  //     });
+  //   }
 
-    if (storesError?.data) {
-      toast.error(storesError?.data?.description, { id: "stores-data" });
-    }
-  }, [brandsError, categoriesError, storesError]);
+  //   if (storesError?.data) {
+  //     toast.error(storesError?.data?.description, { id: "stores-data" });
+  //   }
+  // }, [brandsError, categoriesError, storesError]);  
 
   return (
     <aside className="lg:col-span-3 md:col-span-4 col-span-12">
@@ -113,7 +100,7 @@ const FilterSidebar = () => {
         </div>
 
         {/* Choose Category */}
-        <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
+        {/* <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
           <h2 className="text-lg">Choose Category</h2>
           <div className="flex flex-col gap-y-2.5">
             {categoriesLoading || categories?.length === 0 ? (
@@ -152,10 +139,10 @@ const FilterSidebar = () => {
               </>
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Choose Brand */}
-        <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
+        {/* <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
           <h2 className="text-lg">Choose Brand</h2>
           <div className="flex flex-col gap-y-2.5">
             {brandsLoading || brands?.length === 0 ? (
@@ -191,10 +178,10 @@ const FilterSidebar = () => {
               </>
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Choose Store */}
-        <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
+        {/* <div className="flex flex-col gap-y-4 border py-2 px-4 rounded-xl max-h-96 overflow-y-auto scrollbar-hide">
           <h2 className="text-lg">Choose Store</h2>
           <div className="flex flex-col gap-y-2.5">
             {storesLoading || stores?.length === 0 ? (
@@ -230,7 +217,7 @@ const FilterSidebar = () => {
               </>
             )}
           </div>
-        </div>
+        </div> */}
       </section>
     </aside>
   );

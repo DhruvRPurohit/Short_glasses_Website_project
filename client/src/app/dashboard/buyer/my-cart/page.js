@@ -85,7 +85,7 @@ const Page = () => {
                   >
                     Gallery
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
@@ -114,7 +114,7 @@ const Page = () => {
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
                     Store
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
@@ -167,7 +167,7 @@ const Page = () => {
                         ))}
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    {/* <td className="px-6 py-4">
                       <span className="flex flex-row gap-x-2 scrollbar-hide text-sm">
                         {product?.variations?.sizes?.map((size) => (
                           <span key={size} className="border px-1 py-0.5">
@@ -204,7 +204,7 @@ const Page = () => {
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.store?.title}
                       </span>
-                    </td>
+                    </td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
                         type="submit"

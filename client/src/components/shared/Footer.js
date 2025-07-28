@@ -170,7 +170,7 @@ const Footer = () => {
           ))}
         </div>
         <hr />
-        <p className="text-center">&copy; {year} Canim. All rights reserved.</p>
+        <p className="text-center">&copy; {year} Chattary Ajwan Infotech Pvt. Ltd. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on App
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 09, November 2023
- */
+
 
 /* external imports */
 const express = require("express");
@@ -36,10 +23,10 @@ app.use(
 app.use(express.json());
 
 /* router level connections */
-app.use("/api/brand", require("./routes/brand.route"));
-app.use("/api/category", require("./routes/category.route"));
+// app.use("/api/brand", require("./routes/brand.route"));
+// app.use("/api/category", require("./routes/category.route"));
 app.use("/api/product", require("./routes/product.route"));
-app.use("/api/store", require("./routes/store.route"));
+// app.use("/api/store", require("./routes/store.route"));
 app.use("/api/user", require("./routes/user.route"));
 app.use("/api/cart", require("./routes/cart.route"));
 app.use("/api/favorite", require("./routes/favorite.route"));

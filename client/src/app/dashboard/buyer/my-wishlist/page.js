@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on Page
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 14, January 2024
- */
+
 
 "use client";
 
@@ -79,7 +66,7 @@ const Page = () => {
                   >
                     Gallery
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
@@ -108,7 +95,7 @@ const Page = () => {
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
                     Store
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
@@ -156,7 +143,7 @@ const Page = () => {
                         ))}
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    {/* <td className="px-6 py-4">
                       <span className="flex flex-row gap-x-2 scrollbar-hide text-sm">
                         {product?.variations?.sizes?.map((size) => (
                           <span key={size} className="border px-1 py-0.5">
@@ -193,7 +180,7 @@ const Page = () => {
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.store?.title}
                       </span>
-                    </td>
+                    </td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
                         type="submit"

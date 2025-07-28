@@ -68,23 +68,23 @@ const Dashboard = ({ children }) => {
           },
         ],
       },
-      {
-        name: "My Assets",
-        paths: [
-          {
-            name: "View brand",
-            path: "/dashboard/seller/my-brand",
-          },
-          {
-            name: "View Category",
-            path: "/dashboard/seller/my-category",
-          },
-          {
-            name: "View Store",
-            path: "/dashboard/seller/my-store",
-          },
-        ],
-      },
+      // {
+      //   name: "My Assets",
+      //   paths: [
+      //     {
+      //       name: "View brand",
+      //       path: "/dashboard/seller/my-brand",
+      //     },
+      //     {
+      //       name: "View Category",
+      //       path: "/dashboard/seller/my-category",
+      //     },
+      //     {
+      //       name: "View Store",
+      //       path: "/dashboard/seller/my-store",
+      //     },
+      //   ],
+      // },
       {
         name: "My Products",
         paths: [
@@ -106,18 +106,18 @@ const Dashboard = ({ children }) => {
       {
         name: "Retail Landscape",
         paths: [
-          {
-            name: "List Brands",
-            path: "/dashboard/admin/list-brands",
-          },
-          {
-            name: "List Categories",
-            path: "/dashboard/admin/list-categories",
-          },
-          {
-            name: "List Stores",
-            path: "/dashboard/admin/list-stores",
-          },
+          // {
+          //   name: "List Brands",
+          //   path: "/dashboard/admin/list-brands",
+          // },
+          // {
+          //   name: "List Categories",
+          //   path: "/dashboard/admin/list-categories",
+          // },
+          // {
+          //   name: "List Stores",
+          //   path: "/dashboard/admin/list-stores",
+          // },
           {
             name: "List Products",
             path: "/dashboard/admin/list-products",
@@ -300,7 +300,7 @@ const Dashboard = ({ children }) => {
 
         <footer className="border px-4 py-2 rounded flex justify-center items-center flex-row">
           <p className="text-xs">
-            © {new Date().getFullYear()} Canim. All rights reserved.
+            © {new Date().getFullYear()} Chattary Ajwan Infotech Pvt. Ltd. All rights reserved.
           </p>
         </footer>
       </section>

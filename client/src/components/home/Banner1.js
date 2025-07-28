@@ -1,17 +1,3 @@
-/**
- * Title: Write a program using JavaScript on Banner1
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 09, October 2023
- */
 
 import React from "react";
 import Image from "next/image";
@@ -26,8 +12,7 @@ const Banner1 = () => {
     <Container>
       <div
         className="bg-yellow-50 h-full w-full rounded-primary relative flex flex-col gap-y-8 lg:p-24 pt-8 pb-0"
-        // other colors ffcb77 , f8f0ea
-        // style={{ backgroundImage: "url(/assets/home/banner/dots.svg)" }}
+       
       >
         <Image
           src="/assets/home/banner/Photo_bg.png"
@@ -46,9 +31,9 @@ const Banner1 = () => {
               
             <button
               className="px-8 py-4 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow w-fit mt-4"
-              onClick={() => router.push("https://devhasibulislam.vercel.app/")}
+              onClick={() => router.push("/about")}
             >
-              Start Your Queries
+              Know More 
             </button>
           </div>
         </article>

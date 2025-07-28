@@ -1,89 +1,76 @@
-/**
- * Title: Write a program using JavaScript on CategoryApi
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 11, November 2023
- */
 
-const { canimApi } = require("../canim");
 
-const categoryApi = canimApi.injectEndpoints({
-  endpoints: (builder) => ({
-    // add new category
-    addCategory: builder.mutation({
-      query: (category) => ({
-        url: "/category/add-category",
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: category,
-      }),
+// const { canimApi } = require("../canim");
 
-      invalidatesTags: ["Category", "User"],
-    }),
+// const categoryApi = canimApi.injectEndpoints({
+//   endpoints: (builder) => ({
+//     // add new category
+//     addCategory: builder.mutation({
+//       query: (category) => ({
+//         url: "/category/add-category",
+//         method: "POST",
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+//         },
+//         body: category,
+//       }),
 
-    // get all categories
-    getCategories: builder.query({
-      query: () => ({
-        url: "/category/get-categories",
-        method: "GET",
-      }),
+//       invalidatesTags: ["Category", "User"],
+//     }),
 
-      providesTags: ["Category"],
-    }),
+//     // get all categories
+//     getCategories: builder.query({
+//       query: () => ({
+//         url: "/category/get-categories",
+//         method: "GET",
+//       }),
 
-    // update category
-    updateCategory: builder.mutation({
-      query: ({ id, body }) => ({
-        url: `/category/update-category/${id}`,
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body,
-      }),
+//       providesTags: ["Category"],
+//     }),
 
-      invalidatesTags: ["Category", "User"],
-    }),
+//     // update category
+//     updateCategory: builder.mutation({
+//       query: ({ id, body }) => ({
+//         url: `/category/update-category/${id}`,
+//         method: "PATCH",
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+//         },
+//         body,
+//       }),
 
-    // get a category
-    getCategory: builder.query({
-      query: (id) => ({
-        url: `/category/get-category/${id}`,
-        method: "GET",
-      }),
+//       invalidatesTags: ["Category", "User"],
+//     }),
 
-      providesTags: ["Category"],
-    }),
+//     // get a category
+//     getCategory: builder.query({
+//       query: (id) => ({
+//         url: `/category/get-category/${id}`,
+//         method: "GET",
+//       }),
 
-    // delete category
-    deleteCategory: builder.mutation({
-      query: (id) => ({
-        url: `/category/delete-category/${id}`,
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }),
+//       providesTags: ["Category"],
+//     }),
 
-      invalidatesTags: ["Category", "User"],
-    }),
-  }),
-});
+//     // delete category
+//     deleteCategory: builder.mutation({
+//       query: (id) => ({
+//         url: `/category/delete-category/${id}`,
+//         method: "DELETE",
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+//         },
+//       }),
 
-export const {
-  useAddCategoryMutation,
-  useGetCategoriesQuery,
-  useUpdateCategoryMutation,
-  useGetCategoryQuery,
-  useDeleteCategoryMutation,
-} = categoryApi;
+//       invalidatesTags: ["Category", "User"],
+//     }),
+//   }),
+// });
+
+// export const {
+//   useAddCategoryMutation,
+//   useGetCategoriesQuery,
+//   useUpdateCategoryMutation,
+//   useGetCategoryQuery,
+//   useDeleteCategoryMutation,
+// } = categoryApi;

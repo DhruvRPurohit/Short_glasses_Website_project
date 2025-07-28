@@ -74,21 +74,21 @@ const Page = () => {
       error: updateProductError,
     },
   ] = useUpdateProductMutation();
-  const {
-    isLoading: fetchingBrands,
-    data: fetchBrandsData,
-    error: fetchBrandsError,
-  } = useGetBrandsQuery();
-  const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
-  const {
-    isLoading: fetchingCategories,
-    data: fetchCategoriesData,
-    error: fetchCategoriesError,
-  } = useGetCategoriesQuery();
-  const categories = useMemo(
-    () => fetchCategoriesData?.data || [],
-    [fetchCategoriesData]
-  );
+  // const {
+  //   isLoading: fetchingBrands,
+  //   data: fetchBrandsData,
+  //   error: fetchBrandsError,
+  // } = useGetBrandsQuery();
+  // const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
+  // const {
+  //   isLoading: fetchingCategories,
+  //   data: fetchCategoriesData,
+  //   error: fetchCategoriesError,
+  // } = useGetCategoriesQuery();
+  // const categories = useMemo(
+  //   () => fetchCategoriesData?.data || [],
+  //   [fetchCategoriesData]
+  // );
 
   /* handle thumbnail preview */
   const handleProductThumbnailPreview = (e) => {
@@ -234,33 +234,33 @@ const Page = () => {
       });
     }
 
-    if (fetchingBrands) {
-      toast.loading("Fetching Brands...", { id: "fetchBrands" });
-    }
+    // if (fetchingBrands) {
+    //   toast.loading("Fetching Brands...", { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsData) {
-      toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsData) {
+    //   toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsError) {
-      toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsError) {
+    //   toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchingCategories) {
-      toast.loading("Fetching Categories...", { id: "fetchCategories" });
-    }
+    // if (fetchingCategories) {
+    //   toast.loading("Fetching Categories...", { id: "fetchCategories" });
+    // }
 
-    if (fetchCategoriesData) {
-      toast.success(fetchCategoriesData?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesData) {
+    //   toast.success(fetchCategoriesData?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
 
-    if (fetchCategoriesError) {
-      toast.error(fetchCategoriesError?.data?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesError) {
+    //   toast.error(fetchCategoriesError?.data?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
 
     if (product) {
       setProductTitle(product?.title);
@@ -281,12 +281,12 @@ const Page = () => {
     updatingProduct,
     updateProductData,
     updateProductError,
-    fetchingBrands,
-    fetchBrandsData,
-    fetchBrandsError,
-    fetchingCategories,
-    fetchCategoriesData,
-    fetchCategoriesError,
+    // fetchingBrands,
+    // fetchBrandsData,
+    // fetchBrandsError,
+    // fetchingCategories,
+    // fetchCategoriesData,
+    // fetchCategoriesError,
     product,
   ]);
 

@@ -1,17 +1,3 @@
-/**
- * Title: Write a program using JavaScript on Card
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 15, October 2023
- */
 
 "use client";
 
@@ -94,7 +80,7 @@ const Card = ({ index, product, ...rest }) => {
         )}
       </div>
       <article className="flex flex-col gap-y-3.5 px-4 h-full">
-        <div className="flex flex-row items-center gap-x-1.5">
+        {/* <div className="flex flex-row items-center gap-x-1.5">
           <Badge className="text-indigo-800 bg-indigo-100">
             {product?.variations?.colors?.length + " " + "Colors"}
           </Badge>
@@ -102,7 +88,7 @@ const Card = ({ index, product, ...rest }) => {
           <Badge className="text-purple-800 bg-purple-100">
             {product?.variations?.sizes?.length + " " + "Sizes"}
           </Badge>
-        </div>
+        </div> */}
         <div
           className="flex flex-col gap-y-4 cursor-pointer h-full"
           onClick={() =>

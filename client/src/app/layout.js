@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   metadataBase: new URL("https://canim-csr.vercel.app"),
-  title: "Canim - Shop & eCommerce React Template",
+  title: "Amit Doshi's Shot Glass Collection CMS",
   description:
     "Buy Canim - Shop & eCommerce Next.Js Template by Hasibul Islam. Canim | Shop & eCommerce React Template - a responsive React template. Canim is built with the latest Next.Js 13 App Directory",
   openGraph: {

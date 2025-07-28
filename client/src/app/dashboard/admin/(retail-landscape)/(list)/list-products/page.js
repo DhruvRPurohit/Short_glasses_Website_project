@@ -84,11 +84,17 @@ const ListProducts = () => {
                   >
                     Title
                   </th>
+                   <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
+                  >
+                    Summary
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
-                    Price ($)
+                    Price (₹)
                   </th>
                   <th
                     scope="col"
@@ -96,7 +102,21 @@ const ListProducts = () => {
                   >
                     Gallery
                   </th>
+
                   <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
+                  >
+                    Country of Oringin
+                  </th>
+
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
+                  >
+                    Product Features
+                  </th>
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
@@ -113,7 +133,7 @@ const ListProducts = () => {
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
                     Store
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
@@ -149,6 +169,12 @@ const ListProducts = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4">
+                      <span className="whitespace-nowrap w-60 overflow-x-auto block scrollbar-hide text-sm">
+                        {product?.summary}
+                      </span>
+                    </td>
+
+                    <td className="px-6 py-4">
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.price}
                       </span>
@@ -167,12 +193,24 @@ const ListProducts = () => {
                         ))}
                       </div>
                     </td>
+                    
                     <td className="px-6 py-4">
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {product?.category?.title}
+                        {product?.features[0].title}
                       </span>
                     </td>
+
                     <td className="px-6 py-4">
+                     {
+                      product?.features[0].content.map((item,index)=>(
+                        <span
+                        key={index} className="whitespace-nowrap scrollbar-hide text-sm block">
+                          {item}
+                        </span  >
+                      ))
+                     }
+                    </td>
+                    {/* <td className="px-6 py-4">
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.brand?.title}
                       </span>
@@ -181,7 +219,7 @@ const ListProducts = () => {
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.store?.title}
                       </span>
-                    </td>
+                    </td> */}
                     <td className="px-6 py-4">
                       <span className="whitespace-nowrap scrollbar-hide text-sm">
                         {product?.buyers?.length}

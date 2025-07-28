@@ -72,7 +72,7 @@ const Page = () => {
                   >
                     Gallery
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
@@ -83,7 +83,7 @@ const Page = () => {
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
                     Colors
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
@@ -162,7 +162,7 @@ const Page = () => {
                             ))}
                           </div>
                         </td>
-                        <td className="px-6 py-4">
+                        {/* <td className="px-6 py-4">
                           <span className="flex flex-row gap-x-2 scrollbar-hide text-sm">
                             {product?.variations?.sizes?.map((size) => (
                               <span key={size} className="border px-1 py-0.5">
@@ -184,7 +184,7 @@ const Page = () => {
                               />
                             ))}
                           </span>
-                        </td>
+                        </td> */}
                         <td className="px-6 py-4">
                           <span className="whitespace-nowrap scrollbar-hide text-sm">
                             {quantity}

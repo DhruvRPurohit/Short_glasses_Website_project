@@ -73,12 +73,12 @@ const Left = ({ product }) => {
       </div>
       <article className="flex flex-col gap-y-4">
         <div className="flex flex-row gap-x-2.5">
-          <Badge className="text-indigo-800 bg-indigo-100">
+          {/* <Badge className="text-indigo-800 bg-indigo-100">
             {product?.variations?.colors?.length + " " + "Colors"}
           </Badge>
           <Badge className="text-purple-800 bg-purple-100">
             {product?.variations?.sizes?.length + " " + "Sizes"}
-          </Badge>
+          </Badge> */}
           {product?.campaign?.state === "discount" && (
             <Badge className="text-cyan-800 bg-cyan-100 flex flex-row items-center gap-x-1">
               <Discount /> {product?.campaign?.title}
@@ -101,7 +101,7 @@ const Left = ({ product }) => {
           )}
         </div>
         <div className="flex flex-col gap-y-2.5">
-          <DetailCard
+          {/* <DetailCard
             title={`From ${product?.category?.title} Category`}
             content={product?.category?.keynotes}
           />
@@ -112,7 +112,7 @@ const Left = ({ product }) => {
           <DetailCard
             title={`From ${product?.store?.title} Store`}
             content={product?.store?.keynotes}
-          />
+          /> */}
 
           <div className="flex flex-row flex-wrap gap-1 mt-4">
             {hashTags.map((hashTag, index) => (

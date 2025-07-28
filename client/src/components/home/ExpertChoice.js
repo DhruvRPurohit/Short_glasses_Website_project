@@ -85,7 +85,7 @@ const ExpertChoice = ({ className }) => {
                   </div>
 
                   <article className="flex flex-col gap-y-3.5">
-                    <div className="flex flex-row items-center gap-x-1.5">
+                    {/* <div className="flex flex-row items-center gap-x-1.5">
                       <Badge className="text-indigo-800 bg-indigo-100">
                         {product?.variations?.colors?.length + " " + "Colors"}
                       </Badge>
@@ -93,7 +93,7 @@ const ExpertChoice = ({ className }) => {
                       <Badge className="text-purple-800 bg-purple-100">
                         {product?.variations?.sizes?.length + " " + "Sizes"}
                       </Badge>
-                    </div>
+                    </div> */}
                     <div className="flex flex-col gap-y-4">
                       <h2 className="line-clamp-1">{product?.title}</h2>
                       <div className="flex flex-row items-end justify-between">

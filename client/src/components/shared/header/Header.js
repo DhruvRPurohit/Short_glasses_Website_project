@@ -1,18 +1,3 @@
-/**
- * Title: Write a program using JavaScript on Header
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 17, October 2023
- */
-
 "use client";
 
 import React from "react";
@@ -24,28 +9,56 @@ import Dashboard from "@/components/icons/Dashboard";
 import SearchFilter from "./SearchFilter";
 import MyCart from "./MyCart";
 import { useSelector } from "react-redux";
+import { useRouter } from 'next/navigation'; // ✅ For App Router
+
 
 const Header = () => {
-  const user = useSelector((state) => state?.auth?.user);
-
+const user = useSelector((state) => state?.auth?.user);
+ const router = useRouter();
   return (
     <Container className="">
-      <nav className="rounded-xl p-4 flex flex-row justify-between">
-        <div className="flex flex-row gap-x-4 items-center relative">
-          <Image
+      <nav className="rounded-xl p-1 md:p-4 flex flex-row justify-between gap-8 ">
+        <div className="flex flex-row gap-x-2 md:gap-x-4 items-center relative">
+          {/* <Image
             src="/logo.png"
             alt="logo"
             width={141}
             height={40}
             className="h-[40px] object-contain md:block hidden cursor-pointer"
             onClick={() => window.open("/", "_self")}
-          />
+          /> */}
+            {/* Logo */}
+            <div className="relative bg-[url('https://www.transparenttextures.com/patterns/light-wood.png')] bg-[#fef9ec] bg-blend-overlay bg-cover px-4 md:px-6 py-1 rounded-l-2xl rounded-r-md  border border-yellow-300 overflow-hidden">
+              <div className="absolute inset-0 rounded-l-2xl rounded-r-md pointer-events-none">
+                <div className="absolute -top-1/2 -left-1/2 w-full h-[200%] rotate-45 bg-gradient-to-br from-white/40 via-white/10 to-transparent" />
+              </div>
 
-          <div className="border-l h-7 rounded" />
+              <div className="relative text-[#5b4a2f] z-10">
+                <span className="block text-sm md:text-xl font-semibold tracking-wide drop-shadow-sm">Amit Doshi</span>
+              </div>
 
-          <Categories />
+              {/* Flag-style triangle tip */}
+              <div className="absolute top-1/2 -right-2.5 transform -translate-y-1/2 w-4 h-4 bg-yellow-200 rotate-45 shadow-sm border border-yellow-300" />
+            </div>
+
+
+        {/* <Categories /> */}
         </div>
-        <div className="flex flex-row gap-x-2 relative">
+        
+        <div className="flex flex-row gap-x-1 md:gap-x-2 relative">
+          <button className="px-1 md:px-4  rounded-xl text-xs md:text-sm  text-[#5b4a2f] bg-[#fef9ec] hover:bg-yellow-100 shadow-sm border border-yellow-300 transition duration-200"
+              onClick={() => router.push("/about")}
+          >
+            ABOUT
+          </button>
+            
+          {/* <button className="text-[#5b4a2f] text-base font-medium border-b-2 border-transparent hover:border-yellow-400 transition">
+            ABOUT
+          </button> */}
+
+           {/* <button className="text-base font-medium text-[#5b4a2f] bg-transparent border-none hover:underline focus:outline-none">
+            ABOUT
+          </button> */}
           {user && Object?.keys(user)?.length > 0 && (
             <button
               className="p-2 rounded-secondary hover:bg-slate-100 transition-colors"

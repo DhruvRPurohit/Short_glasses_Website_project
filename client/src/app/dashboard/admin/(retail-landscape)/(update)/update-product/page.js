@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on Page
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 15, January 2024
- */
+
 
 "use client";
 
@@ -87,21 +74,21 @@ const Page = () => {
       error: updateProductError,
     },
   ] = useUpdateProductMutation();
-  const {
-    isLoading: fetchingBrands,
-    data: fetchBrandsData,
-    error: fetchBrandsError,
-  } = useGetBrandsQuery();
-  const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
-  const {
-    isLoading: fetchingCategories,
-    data: fetchCategoriesData,
-    error: fetchCategoriesError,
-  } = useGetCategoriesQuery();
-  const categories = useMemo(
-    () => fetchCategoriesData?.data || [],
-    [fetchCategoriesData]
-  );
+  // const {
+  //   isLoading: fetchingBrands,
+  //   data: fetchBrandsData,
+  //   error: fetchBrandsError,
+  // } = useGetBrandsQuery();
+  // const brands = useMemo(() => fetchBrandsData?.data || [], [fetchBrandsData]);
+  // const {
+  //   isLoading: fetchingCategories,
+  //   data: fetchCategoriesData,
+  //   error: fetchCategoriesError,
+  // } = useGetCategoriesQuery();
+  // const categories = useMemo(
+  //   () => fetchCategoriesData?.data || [],
+  //   [fetchCategoriesData]
+  // );
 
   /* handle thumbnail preview */
   const handleProductThumbnailPreview = (e) => {
@@ -229,33 +216,33 @@ const Page = () => {
       });
     }
 
-    if (fetchingBrands) {
-      toast.loading("Fetching Brands...", { id: "fetchBrands" });
-    }
+    // if (fetchingBrands) {
+    //   toast.loading("Fetching Brands...", { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsData) {
-      toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsData) {
+    //   toast.success(fetchBrandsData?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchBrandsError) {
-      toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
-    }
+    // if (fetchBrandsError) {
+    //   toast.error(fetchBrandsError?.data?.description, { id: "fetchBrands" });
+    // }
 
-    if (fetchingCategories) {
-      toast.loading("Fetching Categories...", { id: "fetchCategories" });
-    }
+    // if (fetchingCategories) {
+    //   toast.loading("Fetching Categories...", { id: "fetchCategories" });
+    // }
 
-    if (fetchCategoriesData) {
-      toast.success(fetchCategoriesData?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesData) {
+    //   toast.success(fetchCategoriesData?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
 
-    if (fetchCategoriesError) {
-      toast.error(fetchCategoriesError?.data?.description, {
-        id: "fetchCategories",
-      });
-    }
+    // if (fetchCategoriesError) {
+    //   toast.error(fetchCategoriesError?.data?.description, {
+    //     id: "fetchCategories",
+    //   });
+    // }
 
     if (product) {
       setProductTitle(product?.title);
@@ -276,12 +263,12 @@ const Page = () => {
     updatingProduct,
     updateProductData,
     updateProductError,
-    fetchingBrands,
-    fetchBrandsData,
-    fetchBrandsError,
-    fetchingCategories,
-    fetchCategoriesData,
-    fetchCategoriesError,
+    // fetchingBrands,
+    // fetchBrandsData,
+    // fetchBrandsError,
+    // fetchingCategories,
+    // fetchCategoriesData,
+    // fetchCategoriesError,
     product,
   ]);
 
@@ -440,9 +427,7 @@ const Page = () => {
           </label>
         </div>
 
-        {/* colors & sizes */}
-        <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
-          {/* colors */}
+        {/* <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           <label htmlFor="colors" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Colors*</span>
             {colors?.length === 0 ? (
@@ -473,7 +458,6 @@ const Page = () => {
             )}
           </label>
 
-          {/* sizes */}
           <label htmlFor="sizes" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Sizes*</span>
             <select
@@ -499,9 +483,8 @@ const Page = () => {
               ))}
             </select>
           </label>
-        </div>
+        </div> */}
 
-        {/* features */}
         <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           {productFeatures?.map((feature, index) => (
             <label
@@ -530,6 +513,7 @@ const Page = () => {
                   )}
                 </span>
               </span>
+              
               <div className="flex flex-col gap-y-2.5">
                 <input
                   type="text"
@@ -585,7 +569,7 @@ const Page = () => {
         {/* campaign & price */}
         <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           {/* campaign */}
-          <label htmlFor="campaign" className="w-full flex flex-col gap-y-1">
+          {/* <label htmlFor="campaign" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Campaign*</span>
             <p className="flex flex-row gap-x-4">
               <input
@@ -623,7 +607,7 @@ const Page = () => {
                 <option value="on-sale">On Sale</option>
               </select>
             </p>
-          </label>
+          </label> */}
 
           {/* price */}
           <label htmlFor="price" className="w-full flex flex-col gap-y-1">
@@ -639,8 +623,7 @@ const Page = () => {
         </div>
 
         {/* category and brand */}
-        <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
-          {/* category */}
+        {/* <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           <label htmlFor="category" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Category*</span>
             {fetchingCategories ? (
@@ -665,7 +648,6 @@ const Page = () => {
             )}
           </label>
 
-          {/* brand */}
           <label htmlFor="brand" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Brand*</span>
             {fetchingBrands ? (
@@ -689,7 +671,7 @@ const Page = () => {
               </select>
             )}
           </label>
-        </div>
+        </div> */}
 
         {/* submit button */}
         <input

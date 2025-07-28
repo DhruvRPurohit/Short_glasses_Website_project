@@ -81,7 +81,7 @@ const MyCart = () => {
                         <div className="flex flex-col gap-y-1">
                           <p className="flex flex-row justify-between">
                             <span className="text-xs flex flex-row gap-x-0.5 items-baseline">
-                              $
+                              ₹
                               <span className="text-sm text-black">
                                 {product?.price * quantity}.00
                               </span>
