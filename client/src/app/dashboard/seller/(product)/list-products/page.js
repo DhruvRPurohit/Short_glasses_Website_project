@@ -91,7 +91,7 @@ const Page = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
-                    Gallery
+                    Gallery Images
                   </th>
                   <th
                     scope="col"
@@ -153,9 +153,9 @@ const Page = () => {
                       <Image
                         src={product?.thumbnail?.url}
                         alt={product?.thumbnail?.public_id}
-                        height={30}
-                        width={30}
-                        className="h-[30px] w-[30px] rounded-secondary border border-green-500/50 object-cover"
+                        height={50}
+                        width={50}
+                        className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
                       />
                     </td>
                     <td className="px-6 py-4">
@@ -181,9 +181,9 @@ const Page = () => {
                             key={thumbnail?._id}
                             src={thumbnail?.url}
                             alt={thumbnail?.public_id}
-                            height={30}
-                            width={30}
-                            className="h-[30px] w-[30px] rounded-secondary border border-green-500/50 object-cover"
+                            height={50}
+                            width={50}
+                            className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
                           />
                         ))}
                       </div>

@@ -1,22 +1,9 @@
-/**
- * Title: Write a program using JavaScript on Banner2
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 14, October 2023
- */
 
 import React from "react";
 import Container from "../shared/Container";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion } from 'framer-motion';
 
 const Banner2 = ({ className }) => {
   const router = useRouter();
@@ -43,10 +30,14 @@ const Banner2 = ({ className }) => {
               <p className="flex flex-row gap-x-0.5 items-center text-lg text-slate-500">
                 Style isn't just for what you wear. It's what you pour into.
               </p>
-              <button className="px-8 py-4 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow w-fit mt-4"
-              onClick={() => router.push("https://devhasibulislam.vercel.app/")}>
+              <motion.button 
+                whileHover={{ scale: 1.10 }}
+                whileTap={{ scale: 0.90 }}
+                className="px-8 py-4 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow w-fit mt-4"
+                onClick={() => router.push("")}
+              >
                 Discover More
-              </button>
+              </motion.button>
             </div>
           </article>
         </div>

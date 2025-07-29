@@ -10,10 +10,11 @@ import { useRouter } from "next/navigation";
 import { useGetProductsQuery } from "@/services/product/productApi";
 import ExpertCard from "../shared/skeletonLoading/ExpertCard";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const ExpertChoice = ({ className }) => {
   const router = useRouter();
-
+  
   const {
     data: productsData,
     error: productsError,
@@ -27,6 +28,27 @@ const ExpertChoice = ({ className }) => {
     }
   }, [productsError]);
 
+  const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
   return (
     <Container className={className ? className : ""}>
       <section className="flex flex-col gap-y-10">
@@ -34,26 +56,33 @@ const ExpertChoice = ({ className }) => {
           Experts Choice. <span className="">Most Favorites</span>
         </h1>
 
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-8">
+         <motion.div
+          className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
           {productsLoading ? (
             <>
               {[1, 2, 3, 4].map((_, index) => (
-                <ExpertCard key={index} />
+                <motion.div key={index} variants={cardVariants}>
+                  <ExpertCard />
+                </motion.div>
               ))}
             </>
           ) : (
             <>
               {products?.slice(-8)?.map((product, index) => (
-                <div
+                <motion.div
                   key={index}
+                  variants={cardVariants}
                   className="flex flex-col gap-y-4 border p-4 rounded-lg hover:border-black transition-colors cursor-pointer"
                   onClick={() =>
                     router.push(
-                      `/product?product_id=${
-                        product?._id
-                      }&product_title=${product.title
+                      `/product?product_id=${product?._id}&product_title=${product.title
                         .replace(/ /g, "-")
-                        .toLowerCase()}}`
+                        .toLowerCase()}`
                     )
                   }
                 >
@@ -85,15 +114,6 @@ const ExpertChoice = ({ className }) => {
                   </div>
 
                   <article className="flex flex-col gap-y-3.5">
-                    {/* <div className="flex flex-row items-center gap-x-1.5">
-                      <Badge className="text-indigo-800 bg-indigo-100">
-                        {product?.variations?.colors?.length + " " + "Colors"}
-                      </Badge>
-                      <div className="h-5 border-l w-[1px]"></div>
-                      <Badge className="text-purple-800 bg-purple-100">
-                        {product?.variations?.sizes?.length + " " + "Sizes"}
-                      </Badge>
-                    </div> */}
                     <div className="flex flex-col gap-y-4">
                       <h2 className="line-clamp-1">{product?.title}</h2>
                       <div className="flex flex-row items-end justify-between">
@@ -111,11 +131,11 @@ const ExpertChoice = ({ className }) => {
                       </div>
                     </div>
                   </article>
-                </div>
+                </motion.div>
               ))}
             </>
           )}
-        </div>
+        </motion.div>
         {!productsLoading && products?.length === 0 && (
           <p className="text-sm">Oops! No products found!</p>
         )}

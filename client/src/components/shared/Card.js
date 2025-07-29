@@ -39,7 +39,7 @@ const Card = ({ index, product, ...rest }) => {
           height={200}
           className="h-[200px] w-full rounded-t-lg object-cover"
         />
-        <div className="flex flex-row gap-x-2.5 absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* <div className="flex flex-row gap-x-2.5 absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
           <Logo
             src={product?.brand?.logo?.url}
             alt={product?.brand?.logo?.public_id}
@@ -48,7 +48,7 @@ const Card = ({ index, product, ...rest }) => {
             src={product?.store?.thumbnail?.url}
             alt={product?.store?.thumbnail?.public_id}
           />
-        </div>
+        </div> */}
         {product?.campaign && (
           <span className="text-xs bg-white/80 px-2.5 py-0.5 rounded-xl absolute bottom-4 right-4 cursor-not-allowed">
             {product?.campaign?.state === "discount" && (

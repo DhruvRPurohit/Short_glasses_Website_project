@@ -4,6 +4,7 @@ import React from "react";
 import Container from "../shared/Container";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion } from 'framer-motion';
 
 const Banner3 = ({ className }) => {
   const router = useRouter();
@@ -27,12 +28,14 @@ const Banner3 = ({ className }) => {
             <p className="flex flex-row gap-x-0.5 items-center text-lg text-slate-500">
               Get more than just a glass — earn bonuses with every buy.
             </p>
-            <button
+            <motion.button
+              whileHover={{scale:1.10}}
+              whileTap={{scale:0.90}}
               className="px-8 py-4 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow w-fit mt-4"
-              onClick={() => router.push("https://devhasibulislam.vercel.app/")}
+              onClick={() => router.push("")}
             >
               Discover More
-            </button>
+            </motion.button>
           </div>
         </article>
       </div>

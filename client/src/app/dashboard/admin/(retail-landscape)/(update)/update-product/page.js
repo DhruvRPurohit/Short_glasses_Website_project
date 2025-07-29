@@ -294,13 +294,13 @@ const Page = () => {
 
     formData.append("features", JSON.stringify(productFeatures));
 
-    formData.append(
-      "campaign",
-      JSON.stringify({
-        title: productCampaign.title,
-        state: productCampaign.state,
-      })
-    );
+    // formData.append(
+    //   "campaign",
+    //   JSON.stringify({
+    //     title: productCampaign.title,
+    //     state: productCampaign.state,
+    //   })
+    // );
 
     formData.append(
       "variations",

@@ -99,7 +99,7 @@ const About = () => {
          >
           
           <p className="text-gray-800 text-lg leading-relaxed">
-            What Gives the collection uninqueness is the diversity in the design of the shot glasses as well as the story behind thme.
+            What Gives the collection uninqueness is the diversity in the design of the shot glasses as well as the story behind them.
           </p>
           <br />
          

@@ -1,23 +1,33 @@
-/**
- * Title: Write a program using JavaScript on Steps
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 09, October 2023
- */
 
 import Image from "next/image";
 import React from "react";
 import Container from "../shared/Container";
+import { motion } from "framer-motion";
 
 const Steps = () => {
+
+  const containerVariants = {
+  hidden: {},
+  show: {
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+
   const steps = [
     {
       badge: (
@@ -63,14 +73,21 @@ const Steps = () => {
 
   return (
     <Container>
-      <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 1 }}
+        className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20"
+      >
         <picture className="hidden md:block absolute inset-x-0 top-5">
           <source srcSet="/assets/home/steps/step-bg.svg" type="image/svg" />
           <img src="/assets/home/steps/step-bg.svg" alt="vector" />
         </picture>
         {steps.map((step, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={itemVariants}
             className="relative flex flex-col gap-y-8 items-center max-w-xs mx-auto"
           >
             <div className="max-w-[100px] mx-auto">
@@ -89,9 +106,9 @@ const Steps = () => {
                 {step.description}
               </span>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Container>
   );
 };
