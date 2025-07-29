@@ -11,11 +11,11 @@ const Providers = ({ children }) => {
   return (
     <Provider store={store}>
       {children}
-      <AnimatedCursor
+      {/* <AnimatedCursor
         innerSize={10}
         color="0, 0, 0"
         showSystemCursor={false}
-      />
+      /> */}
     </Provider>
   );
 };

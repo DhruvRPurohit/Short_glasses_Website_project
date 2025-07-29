@@ -49,7 +49,7 @@ const user = useSelector((state) => state?.auth?.user);
           <button className="px-1 md:px-4  rounded-xl text-xs md:text-sm  text-[#5b4a2f] bg-[#fef9ec] hover:bg-yellow-100 shadow-sm border border-yellow-300 transition duration-200"
               onClick={() => router.push("/about")}
           >
-            ABOUT
+            About
           </button>
             
           {/* <button className="text-[#5b4a2f] text-base font-medium border-b-2 border-transparent hover:border-yellow-400 transition">

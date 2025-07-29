@@ -1,17 +1,3 @@
-/**
- * Title: Write a program using JavaScript on Signup
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 08, November 2023
- */
 
 "use client";
 
@@ -106,18 +92,11 @@ const Signup = () => {
 
   return (
     <section className="min-w-full min-h-screen flex justify-center items-center p-4">
-      <div className="max-w-md w-full flex flex-col gap-y-4 border p-8 rounded-primary">
-        <div className="flex flex-row items-center gap-x-2">
-          <hr className="w-full" />
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={141}
-            height={40}
-            className="max-w-full cursor-pointer"
-            onClick={() => router.push("/")}
-          />
-          <hr className="w-full" />
+      <div className="max-w-md w-full flex flex-col gap-y-4 border p-8 rounded-2xl shadow-2xl">
+        <div className="flex  items-center gap-x-3">
+          <hr className="flex-1" />
+          <div className="text-lg font-semibold text-gray-800">Sign Up</div>
+          <hr className="flex-1" />
         </div>
         <form
           action=""

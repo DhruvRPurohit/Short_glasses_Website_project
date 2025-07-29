@@ -58,66 +58,64 @@ const ResetPassword = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex justify-center items-center px-4">
-      <div className="max-w-md w-full flex flex-col gap-y-4 border p-8 rounded-primary">
-        <div className="flex flex-row items-center gap-x-2">
-          <hr className="w-full" />
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={141}
-            height={40}
-            className="max-w-full cursor-pointer"
-            onClick={() => router.push("/")}
-          />
-          <hr className="w-full" />
+    <section className="w-screen h-screen flex justify-center items-center bg-gray-50 px-4">
+      <div className="max-w-md w-full bg-white shadow-xl rounded-2xl p-8 border border-gray-200 flex flex-col gap-y-6">
+        <div className="flex items-center gap-x-3">
+          <hr className="flex-1 border-gray-300" />
+          <div className="text-lg font-semibold text-gray-800">Forgot Password</div>
+          <hr className="flex-1 border-gray-300" />
         </div>
+
         <form
           action=""
-          className="w-full flex flex-col gap-y-4"
+          className="w-full flex flex-col gap-y-5"
           onSubmit={handleResetPassword}
         >
-          <label htmlFor="email" className="flex flex-col gap-y-1">
-            <span className="text-sm">Enter Your Email</span>
+          <label htmlFor="email" className="flex flex-col gap-y-1 text-sm text-gray-700">
+            <span>Enter Your Email</span>
             <input
               type="email"
               name="email"
               id="email"
               placeholder="i.e. example@gmail.com"
-              className=""
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-200"
               required
             />
           </label>
-          <label htmlFor="password" className="flex flex-col gap-y-1">
-            <span className="text-sm">Enter New Password</span>
+
+          <label htmlFor="password" className="flex flex-col gap-y-1 text-sm text-gray-700">
+            <span>Enter New Password</span>
             <input
               type="password"
               name="password"
               id="password"
               placeholder="i.e. Admin@123"
-              className=""
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-200"
               required
             />
           </label>
+
           <button
             type="submit"
             disabled={isLoading}
-            className="py-2 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow disabled:bg-gray-200 disabled:border-gray-200 disabled:text-black/50 disabled:cursor-not-allowed flex flex-row justify-center items-center text-sm"
+            className="w-full py-2 font-medium border border-black rounded-lg bg-black hover:bg-black/90 text-white transition-colors duration-200 disabled:bg-gray-200 disabled:border-gray-200 disabled:text-black/50 disabled:cursor-not-allowed flex items-center justify-center text-sm"
           >
-            {isLoading ? <Spinner /> : "Forgot Password"}
+            {isLoading ? <Spinner /> : "Reset Password"}
           </button>
         </form>
-        <div className="flex flex-row justify-center items-center gap-x-2 text-xs">
-          <Link href="/auth/signin" className="">
+
+        <div className="flex justify-center items-center gap-x-2 text-sm text-gray-600">
+          <Link href="/auth/signin" className="hover:underline hover:text-black transition">
             Sign In
           </Link>
-          <span className="h-4 border-l" />
-          <Link href="/auth/signup" className="">
+          <span className="h-4 border-l border-gray-300" />
+          <Link href="/auth/signup" className="hover:underline hover:text-black transition">
             Sign Up
           </Link>
         </div>
       </div>
     </section>
+
   );
 };
 
