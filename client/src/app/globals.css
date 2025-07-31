@@ -54,3 +54,6 @@ textarea {
 select {
   @apply form-select rounded text-sm resize-none;
 }
+.font-young {
+  font-family: "Young Serif", serif;
+}

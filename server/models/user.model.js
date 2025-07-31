@@ -59,18 +59,25 @@ const userSchema = new mongoose.Schema(
     // for contact number
     phone: {
       type: String,
-      required: [
-        true,
-        "Please, provide your phone number, i.e.: +8801xxxxxxxxx",
-      ],
-      validate: {
-        validator: (value) =>
-          validator.isMobilePhone(value, "bn-BD", { strictMode: true }),
-        message:
-          "Phone number {VALUE} is not valid. Please, retry like +8801xxxxxxxxx",
-      },
+      required: [true, "Please, provide your phone number"],
       unique: true,
+      trim: true,
     },
+
+    // phone: {
+    //   type: String,
+    //   required: [
+    //     true,
+    //     "Please, provide your phone number, i.e.: +8801xxxxxxxxx",
+    //   ],
+    //   validate: {
+    //     validator: (value) =>
+    //       validator.isMobilePhone(value, "bn-BD", { strictMode: true }),
+    //     message:
+    //       "Phone number {VALUE} is not valid. Please, retry like +8801xxxxxxxxx",
+    //   },
+    //   unique: true,
+    // },
 
     // for role
     role: {

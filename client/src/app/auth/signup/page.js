@@ -8,15 +8,27 @@ import { useSignUpMutation } from "@/services/auth/authApi";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
+import { optimizeFonts } from "../../../../next.config";
+import useClickOutside from './useClickOutside';
 
 const Signup = () => {
   const router = useRouter();
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [avatar, setAvatar] = useState(null);
   const [signup, { isLoading, data, error }] = useSignUpMutation();
+  const [countries,setCountries]=useState([])
+  const [code ,setCode]=useState()
+  const [image,setImage]=useState("")
+  const [number,setNumber]=useState("") 
+  console.log(image)
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(countries[0]);
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => setIsOpen(false));
 
+  
   useEffect(() => {
     if (isLoading) {
       toast.loading("Signing up...", { id: "signup" });
@@ -33,6 +45,30 @@ const Signup = () => {
     if (error?.data) {
       toast.error(error?.data?.description, { id: "signup" });
     }
+
+    const fetchCountryCodes = async () => {
+    try {
+      const res = await fetch(
+       "https://restcountries.com/v3.1/all?fields=name,idd,flags"
+      );
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
+
+      const parsed = data
+        .filter(c => c.idd?.root)
+        .map(c => ({
+          name: c.name.common,
+          code: `${c.idd.root}${c.idd.suffixes?.[0] || ''}`,
+          flag: c.flags?.png,
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+        setCountries(parsed);
+    } catch (error) {
+      console.error('Error fetching countries:', error);
+    }
+  };
+
+  fetchCountryCodes();
   }, [isLoading, data, error, router]);
 
   const handleAvatarChange = (e) => {
@@ -49,6 +85,9 @@ const Signup = () => {
         reader.readAsDataURL(file);
       }
     }
+     if (countries.length > 0 && !selected) {
+      setSelected(countries[0]);
+      }
   };
 
   const handleSignup = async (e) => {
@@ -70,18 +109,18 @@ const Signup = () => {
       );
       return;
     }
-
+    
     // Phone number validation regex
-    const phoneRegex = /^\+91\d{10}$/;
+    const fullPhone = `${selected.code} ${number}`; // Combine selected code and typed digits
+    console.log(fullPhone)
+      const phoneRegex = /^\+\d{1,4}\s\d{6,14}$/;
 
-    if (!e.target.phone.value.match(phoneRegex)) {
-      alert(
-        "Phone number must start with +91 and have a total length of 10 digits."
-      );
-      return;
-    }
+      if (!phoneRegex.test(fullPhone)) {
+        alert("Enter a valid international phone number (e.g., +44 7123456789).");
+        return;
+      }
 
-    formData.append("phone", e.target.phone.value);
+    formData.append("phone", fullPhone)
     formData.append("password", e.target.password.value);
 
     signup(formData);
@@ -191,15 +230,93 @@ const Signup = () => {
           </label>
           <label htmlFor="phone" className="flex flex-col gap-y-1">
             <span className="text-sm">Enter Your Phone Number*</span>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="i.e. +8801906315901"
-              className=""
-              required
-            />
+            <div className="flex gap-x-3 justify-center items-center">
+              {code &&
+                <img
+                  src={image}
+                  alt="no image"
+                  className="w-8 h-6 object-center"
+                />
+              }
+              {/* <select
+                name="countryCode"
+                id="countryCode"
+                className="px-2 py-2 w-[100px] border rounded-md text-sm"
+                required
+                 onChange={(e) => {
+                  const selected = countries.find(c => c.code === e.target.value);
+                  if (selected) {
+                    setCode(selected.code);
+                    setImage(selected.flag)
+                  }
+                }}
+              >
+                {
+                  countries.map((i,index)=>(
+                    <option key={index} value={i.code}>
+                      {i.name.slice(0,3)} 
+
+                    </option>
+                  ))
+                }
+              </select> */}
+              <div className="relative w-[120px] "  ref={dropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="flex items-center justify-between w-full border rounded-md px-2 py-1 bg-white"
+                >
+                  <div className="flex items-center gap-2">
+                    <img src={selected?.flag} alt={selected?.name} className="w-8 h-6 object-center" />
+                    <span className="text-sm">{ selected && selected.name? `${selected.name.slice(0, 3)} (${selected.code})` : ''} </span>
+                  </div>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isOpen && (
+                  <div className="absolute bottom-full mb-2 z-10 w-[220px] bg-white border rounded-md shadow-xl max-h-60 overflow-y-auto overflow-x-hidden py-2"
+>
+                    {countries.map((country, index) => (
+                      <div
+                        key={index}
+                        onClick={() => {
+                          setSelected(country);
+                          setIsOpen(false);
+                        }}
+                        className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm whitespace-nowrap"
+                      >
+                        <img src={country.flag} alt={country.name} className="w-6 h-4 object-cover rounded-sm" />
+                        <span>{country.name} ({country.code})</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+
+             
+                
+
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  placeholder="Contact Number"
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                  className="flex-1 px-3 py-1 border rounded-md text-sm"
+                  required 
+                />
+              </div>
           </label>
+
           <button
             type="submit"
             disabled={isLoading}
@@ -209,11 +326,11 @@ const Signup = () => {
           </button>
         </form>
         <div className="flex flex-row justify-center items-center gap-x-2 text-xs">
-          <Link href="/auth/signin" className="">
+          <Link href="/auth/signin" className="hover:underline">
             Sign In
           </Link>
           <span className="h-4 border-l" />
-          <Link href="/auth/forgot-password" className="">
+          <Link href="/auth/forgot-password" className="hover:underline">
             Forgot Password
           </Link>
         </div>

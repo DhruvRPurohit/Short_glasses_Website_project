@@ -34,7 +34,7 @@ const user = useSelector((state) => state?.auth?.user);
               </div>
 
               <div className="relative text-[#5b4a2f] z-10">
-                <span className="block text-sm md:text-xl font-semibold tracking-wide drop-shadow-sm">Amit Doshi</span>
+                <span className="block text-sm  whitespace-nowrap md:text-xl font-young font-semibold tracking-wide drop-shadow-sm">Amit Doshi</span>
               </div>
 
               {/* Flag-style triangle tip */}

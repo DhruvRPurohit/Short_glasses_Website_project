@@ -1,3 +1,4 @@
+"use client";
 
 import Image from "next/image";
 import React from "react";
@@ -77,7 +78,7 @@ const Steps = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20"
       >
         <picture className="hidden md:block absolute inset-x-0 top-5">

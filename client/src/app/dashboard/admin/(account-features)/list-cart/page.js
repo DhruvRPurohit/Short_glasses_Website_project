@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on Page
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 20, January 2024
- */
+
 
 "use client";
 
@@ -86,7 +73,7 @@ const Page = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
-                    Gallery
+                    Gallery Images
                   </th>
                   <th
                     scope="col"
@@ -124,9 +111,9 @@ const Page = () => {
                       <Image
                         src={crt?.user?.avatar?.url}
                         alt={crt?.user?.avatar?.public_id}
-                        height={30}
-                        width={30}
-                        className="h-[30px] w-[30px] rounded-secondary border border-green-500/50 object-cover"
+                        height={50}
+                        width={50}
+                        className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
                       />
                     </td>
                     <td className="px-6 py-4">
@@ -138,9 +125,9 @@ const Page = () => {
                       <Image
                         src={crt?.product?.thumbnail?.url}
                         alt={crt?.product?.thumbnail?.public_id}
-                        height={30}
-                        width={30}
-                        className="h-[30px] w-[30px] rounded-secondary border border-green-500/50 object-cover"
+                        height={50}
+                        width={50}
+                        className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
                       />
                     </td>
                     <td className="px-6 py-4">
@@ -155,9 +142,9 @@ const Page = () => {
                             key={thumbnail?._id}
                             src={thumbnail?.url}
                             alt={thumbnail?.public_id}
-                            height={30}
-                            width={30}
-                            className="h-[30px] w-[30px] rounded-secondary border border-green-500/50 object-cover"
+                            height={50}
+                            width={50}
+                            className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
                           />
                         ))}
                       </div>

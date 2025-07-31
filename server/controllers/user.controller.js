@@ -6,8 +6,10 @@ const userService = require("../services/user.service");
 /* sign up an user */
 exports.signUp = async (req, res, next) => {
   try {
+    console.log(req.body)
     await userService.signUp(req, res);
   } catch (error) {
+    console.log(error)
     next(error);
   } finally {
     console.log(`Route: ${req.url} || Method: ${req.method}`);

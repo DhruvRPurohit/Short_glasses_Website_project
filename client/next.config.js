@@ -28,13 +28,25 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.jsdelivr.net", // ✅ For faker images
+        hostname: "cdn.jsdelivr.net",
         port: "",
         pathname: "**/*",
       },
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com", // ✅ For GitHub avatars
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+        port: "",
+        pathname: "**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "flagcdn.com", // ✅ Added for flag images
         port: "",
         pathname: "**/*",
       },

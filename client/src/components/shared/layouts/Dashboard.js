@@ -159,7 +159,7 @@ const Dashboard = ({ children }) => {
 
   return (
     <main className="h-screen w-screen">
-      <section className="max-w-5xl mx-auto h-full flex flex-col gap-y-4 p-2">
+      <section className="w-full mx-auto h-full flex flex-col gap-y-4 p-2">
         <nav className="border px-4 py-2 rounded flex justify-between items-center flex-row">
           {showMenu ? (
             <button
@@ -224,7 +224,7 @@ const Dashboard = ({ children }) => {
 
         <div className="grid grid-cols-12 gap-x-2 h-full overflow-hidden relative">
           <Sidebar />
-          <div className="md:col-span-8 col-span-12 overflow-y-auto rounded">
+          <div className="md:col-span-9 col-span-12 overflow-y-auto rounded">
             {children}
           </div>
 
