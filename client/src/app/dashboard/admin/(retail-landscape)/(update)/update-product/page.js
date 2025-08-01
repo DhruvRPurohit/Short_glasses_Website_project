@@ -1,13 +1,12 @@
 
-
 "use client";
 
 import Minus from "@/components/icons/Minus";
 import Plus from "@/components/icons/Plus";
 import Dashboard from "@/components/shared/layouts/Dashboard";
 import useGetColors from "@/libs/useGetColors";
-// import { useGetBrandsQuery } from "@/services/brand/brandApi";
-// import { useGetCategoriesQuery } from "@/services/category/categoryApi";
+// import { useGetjsQuery } from "@/services/brand/brandApi";
+import { useGetCategoriesQuery } from "@/services/category/categoryApi";
 import {
   useGetProductQuery,
   useUpdateProductMutation,
@@ -28,8 +27,8 @@ const Page = () => {
   const [productGalleryPreviews, setProductGalleryPreviews] = useState([]);
 
   /* colors and sizes hooks */
-  const colors = useGetColors() || [];
-  const sizes = ["xxs", "xs", "s", "m", "l", "xl", "xxl"];
+  // const colors = useGetColors() || [];
+  // const sizes = ["xxs", "xs", "s", "m", "l", "xl", "xxl"];
 
   /* user state hook */
   const user = useSelector((state) => state.auth.user);
@@ -42,16 +41,16 @@ const Page = () => {
   const [productTitle, setProductTitle] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productSummary, setProductSummary] = useState("");
-  const [productBrand, setProductBrand] = useState("");
-  const [productCategory, setProductCategory] = useState("");
-  const [productCampaign, setProductCampaign] = useState({
-    title: "",
-    state: "",
-  });
-  const [productVariations, setProductVariations] = useState({
-    colors: [],
-    sizes: [],
-  });
+  // const [productBrand, setProductBrand] = useState("");
+  // const [productCategory, setProductCategory] = useState("");
+  // const [productCampaign, setProductCampaign] = useState({
+  //   title: "",
+  //   state: "",
+  // });
+  // const [productVariations, setProductVariations] = useState({
+  //   colors: [],
+  //   sizes: [],
+  // });
   const [productFeatures, setProductFeatures] = useState([
     { title: "", content: [""] },
   ]);
@@ -182,11 +181,29 @@ const Page = () => {
     });
   };
 
+  // const handleContentChange = (featureIndex, contentIndex, value) => {
+  //   // const updatedFeatures = [...productFeatures];
+  //   // updatedFeatures[featureIndex].content[contentIndex] = value;
+  //   // setProductFeatures(updatedFeatures);
+    
+  // };
+
   const handleContentChange = (featureIndex, contentIndex, value) => {
-    const updatedFeatures = [...productFeatures];
-    updatedFeatures[featureIndex].content[contentIndex] = value;
-    setProductFeatures(updatedFeatures);
-  };
+  const updatedFeatures = productFeatures.map((feature, i) => {
+    if (i === featureIndex) {
+      return {
+        ...feature,
+        content: feature.content.map((item, j) =>
+          j === contentIndex ? value : item
+        ),
+      };
+    }
+    return feature;
+  });
+
+  setProductFeatures(updatedFeatures);
+};
+
 
   /* visible states in toast */
   useEffect(() => {
@@ -248,10 +265,10 @@ const Page = () => {
       setProductTitle(product?.title);
       setProductPrice(product?.price);
       setProductSummary(product?.summary);
-      setProductBrand(product?.brand?._id);
-      setProductCategory(product?.category?._id);
-      setProductCampaign(product?.campaign);
-      setProductVariations(product?.variations);
+      // setProductBrand(product?.brand?._id);
+      // setProductCategory(product?.category?._id);
+      // setProductCampaign(product?.campaign);
+      // setProductVariations(product?.variations);
       setProductFeatures(product?.features);
       setProductGalleryPreviews(product?.gallery);
       setProductThumbnailPreview(product?.thumbnail);
@@ -302,17 +319,16 @@ const Page = () => {
     //   })
     // );
 
-    formData.append(
-      "variations",
-      JSON.stringify({
-        colors: productVariations.colors,
-        sizes: productVariations.sizes,
-      })
-    );
+    // formData.append(
+    //   "variations",
+    //   JSON.stringify({
+    //     colors: productVariations.colors,
+    //     sizes: productVariations.sizes,
+    //   })
+    // );
 
-    formData.append("brand", productBrand);
-    formData.append("category", productCategory);
-
+    // formData.append("brand", productBrand);
+    // formData.append("category", productCategory);
     updateProduct({ id, body: formData });
   }
 
@@ -427,6 +443,7 @@ const Page = () => {
           </label>
         </div>
 
+        {/* colors & sizes */}
         {/* <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           <label htmlFor="colors" className="w-full flex flex-col gap-y-1">
             <span className="text-sm">Colors*</span>
@@ -485,6 +502,7 @@ const Page = () => {
           </label>
         </div> */}
 
+        {/* features */}
         <div className="w-full flex flex-col gap-y-4 p-4 border rounded">
           {productFeatures?.map((feature, index) => (
             <label
@@ -513,7 +531,6 @@ const Page = () => {
                   )}
                 </span>
               </span>
-              
               <div className="flex flex-col gap-y-2.5">
                 <input
                   type="text"

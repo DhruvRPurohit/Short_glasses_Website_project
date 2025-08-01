@@ -10,9 +10,9 @@
     tagTypes: [
       "User",
       "Product",
-      // "Brand",
-      // "Category",
-      // "Store",
+      "Brand",
+      "Category",
+      "Store",
       "Cart",
       "Favorite",
       "Purchase",

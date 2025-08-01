@@ -25,12 +25,14 @@ const Signup = () => {
   const [number,setNumber]=useState("") 
   console.log(image)
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(countries[0]);
+   const [selected, setSelected] = useState(null);
   const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
-  
+ 
+
   useEffect(() => {
+    
     if (isLoading) {
       toast.loading("Signing up...", { id: "signup" });
     }
@@ -67,10 +69,16 @@ const Signup = () => {
     } catch (error) {
       console.error('Error fetching countries:', error);
     }
+    if (!selected && countries.length > 0) {
+      const defaultCountry = countries.find((c) => c.name.toLowerCase() === "india");
+      if (defaultCountry) {
+        setSelected(defaultCountry);
+      }
+    }
   };
 
   fetchCountryCodes();
-  }, [isLoading, data, error, router]);
+  }, [isLoading, data, error, router ,countries, selected]);
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -236,7 +244,7 @@ const Signup = () => {
                 <Image
                   src={image}
                   height={24} width={32} 
-                  alt="no image"
+                  alt="select"
                   className="w-8 h-6 object-center"
                 />
               }
