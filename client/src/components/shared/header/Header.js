@@ -17,7 +17,7 @@ const user = useSelector((state) => state?.auth?.user);
  const router = useRouter();
   return (
     <Container className="">
-      <nav className="rounded-xl p-1 md:p-4 flex flex-row justify-between gap-8 ">
+      <nav className="rounded-xl p-1 md:p-4 flex flex-row  md:justify-between justify-center gap-6 ">
         <div className="flex flex-row gap-x-2 md:gap-x-4 items-center relative">
           {/* <Image
             src="/logo.png"
@@ -45,14 +45,13 @@ const user = useSelector((state) => state?.auth?.user);
         {/* <Categories /> */}
         </div>
         
-        <div className="flex flex-row gap-x-1 md:gap-x-2 relative">
+        <div className="flex flex-row  md:gap-x-2 relative">
           <button className="px-1 md:px-4  rounded-xl text-xs md:text-sm  text-[#5b4a2f] bg-[#fef9ec] hover:bg-yellow-100 shadow-sm border border-yellow-300 transition duration-200"
               onClick={() => router.push("/about")}
           >
             About
           </button>
-            
-          
+                      
           {user && Object?.keys(user)?.length > 0 && (
             <button
               className="p-2 rounded-secondary hover:bg-slate-100 transition-colors"

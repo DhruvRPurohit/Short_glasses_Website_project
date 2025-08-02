@@ -23,7 +23,6 @@ const Signup = () => {
   const [code ,setCode]=useState()
   const [image,setImage]=useState("")
   const [number,setNumber]=useState("") 
-  console.log(image)
   const [isOpen, setIsOpen] = useState(false);
    const [selected, setSelected] = useState(null);
   const dropdownRef = useRef(null);
@@ -45,6 +44,7 @@ const Signup = () => {
         window.open("/auth/signin", "_self");
       }, 1000);
     }
+
     if (error?.data) {
       toast.error(error?.data?.description, { id: "signup" });
     }
@@ -96,7 +96,7 @@ const Signup = () => {
     }
      if (countries.length > 0 && !selected) {
       setSelected(countries[0]);
-      }
+    }
   };
 
   const handleSignup = async (e) => {
@@ -121,7 +121,6 @@ const Signup = () => {
     
     // Phone number validation regex
     const fullPhone = `${selected.code} ${number}`; // Combine selected code and typed digits
-    console.log(fullPhone)
       const phoneRegex = /^\+\d{1,4}\s\d{6,14}$/;
 
       if (!phoneRegex.test(fullPhone)) {
@@ -134,9 +133,7 @@ const Signup = () => {
 
     signup(formData);
 
-    for (let [key, value] of formData.entries()) {
-     console.log(`${key}:`, value);
-    }
+   
     e.target.reset();
     setAvatarPreview(null);
   };
@@ -309,11 +306,6 @@ const Signup = () => {
                   </div>
                 )}
               </div>
-
-
-             
-                
-
                 <input
                   type="tel"
                   name="phone"
@@ -321,7 +313,7 @@ const Signup = () => {
                   placeholder="Contact Number"
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
-                  className="flex-1 px-3 py-1 border rounded-md text-sm"
+                  className="flex-1 px-3 w-[150px] py-1 border rounded-md text-sm"
                   required 
                 />
               </div>
