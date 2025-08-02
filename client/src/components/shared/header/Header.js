@@ -52,13 +52,7 @@ const user = useSelector((state) => state?.auth?.user);
             About
           </button>
             
-          {/* <button className="text-[#5b4a2f] text-base font-medium border-b-2 border-transparent hover:border-yellow-400 transition">
-            ABOUT
-          </button> */}
-
-           {/* <button className="text-base font-medium text-[#5b4a2f] bg-transparent border-none hover:underline focus:outline-none">
-            ABOUT
-          </button> */}
+          
           {user && Object?.keys(user)?.length > 0 && (
             <button
               className="p-2 rounded-secondary hover:bg-slate-100 transition-colors"
