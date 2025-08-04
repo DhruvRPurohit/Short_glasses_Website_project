@@ -77,27 +77,27 @@ const Footer = () => {
     //     },
     //   ],
     // },
-    {
-      name: "About",
-      paths: [
-        {
-          name: "Team",
-          path: "/",
-        },
-        {
-          name: "Locations",
-          path: "/",
-        },
-        {
-          name: "Privacy",
-          path: "/",
-        },
-        {
-          name: "Terms",
-          path: "/",
-        },
-      ],
-    },
+    // {
+    //   name: "About",
+    //   paths: [
+    //     {
+    //       name: "Team",
+    //       path: "/",
+    //     },
+    //     {
+    //       name: "Locations",
+    //       path: "/",
+    //     },
+    //     {
+    //       name: "Privacy",
+    //       path: "/",
+    //     },
+    //     {
+    //       name: "Terms",
+    //       path: "/",
+    //     },
+    //   ],
+    // },
     // {
     //   name: "Contact",
     //   paths: [
@@ -118,10 +118,6 @@ const Footer = () => {
     {
       name: "Legal",
       paths: [
-        {
-          name: "Shot_Glass",
-          path: "/",
-        },
         {
           name: "Terms of Services",
           path: "/",
@@ -153,26 +149,12 @@ const Footer = () => {
 
   return (
     <footer className="footer-1 bg-gray-100 py-8 sm:py-12 m-6 p-6 rounded-xl">
-      <div className="container mx-auto px-4 flex flex-col gap-y-10">
-        {/* <div className="flex md:flex-row md:flex-wrap md:justify-between flex-col gap-x-3 gap-y-8">
-          {sitemaps?.map((sitemap, index) => (
-            <div key={index} className="flex flex-col gap-y-3">
-              <h2 className="text-2xl">{sitemap.name}</h2>
-              <div className="flex flex-col gap-y-1.5">
-                {sitemap?.paths?.map((path, index) => (
-                  <Link key={index} href={path?.path} className="text-md">
-                    {path?.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div> */}
-       <div className="flex flex-wrap px-4">
+      <div className="container mx-auto px-4 flex flex-col gap-y-10">       
+       <div className="flex flex-wrap justify-evenly items-center  py-2">
         {sitemaps?.map((i, index) => (
           <div
             key={index}
-            className="w-full md:w-1/3 flex flex-col justify-center items-start px-4 py-4"
+            className="w-full md:w-1/3 flex flex-col justify-center items-start  py-4"
           >
             <h2 className="text-2xl">{i.name}</h2>
             <div className="flex flex-col gap-y-2">

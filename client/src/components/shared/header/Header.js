@@ -58,7 +58,7 @@ const user = useSelector((state) => state?.auth?.user);
               className="p-2 rounded-secondary hover:bg-slate-100 transition-colors"
               onClick={() => window.open("/dashboard", "_self")}
             >
-              <Dashboard className="h-6 w-6" />
+              <Dashboard className="h-6 w-6"/>
             </button>
           )}
           <SearchFilter />
