@@ -2,6 +2,7 @@
 
 "use client";
 
+import CartButton2 from "@/components/details/CartButton2";
 import Inform from "@/components/icons/Inform";
 import Trash from "@/components/icons/Trash";
 import Dashboard from "@/components/shared/layouts/Dashboard";
@@ -64,7 +65,7 @@ const Page = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
-                    Gallery
+                    GALLERY IMAGE
                   </th>
                   {/* <th
                     scope="col"
@@ -101,6 +102,12 @@ const Page = () => {
                     className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
                     Action
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
+                  >
+                    ADD TO CART
                   </th>
                 </tr>
               </thead>
@@ -182,13 +189,16 @@ const Page = () => {
                       </span>
                     </td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button
-                        type="submit"
-                        className="bg-red-50 border border-red-900 p-0.5 rounded-secondary text-red-900"
-                        onClick={() => removeFromFavorite({ id: _id })}
-                      >
-                        <Trash />
-                      </button>
+                        <button
+                          type="submit"
+                          className="bg-red-50 border border-red-900 p-0.5 rounded-secondary text-red-900"
+                          onClick={() => removeFromFavorite({ id: _id })}
+                        >
+                          <Trash />
+                        </button>
+                    </td>
+                    <td>
+                        <CartButton2 product={product} />
                     </td>
                   </tr>
                 ))}

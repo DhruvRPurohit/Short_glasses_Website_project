@@ -70,7 +70,7 @@ const Page = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
                   >
-                    Gallery
+                    Gallery IMAGES
                   </th>
                   {/* <th
                     scope="col"

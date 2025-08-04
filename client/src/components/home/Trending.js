@@ -74,7 +74,17 @@ const Trending = () => {
                     viewport={{ once: true }}
                     custom={index}
                   >
-                    <Card product={product} />
+                    <Card product={product}  
+                      onClick={() =>
+                      router.push(
+                        `/product?product_id=${
+                          product?._id
+                        }&product_title=${product?.title
+                          .replace(/ /g, "-")
+                          .toLowerCase()}}`
+                      ) 
+                    }
+                    />
                   </motion.div>
                 ))}
               </>
