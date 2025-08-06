@@ -13,11 +13,13 @@ import {
   useAddToFavoriteMutation,
   useRemoveFromFavoriteMutation,
 } from "@/services/favorite/favoriteApi";
+import { useDeleteFromCartMutation } from "@/services/cart/cartApi";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import Spinner from "./Spinner";
 
-const Card = ({ index, product, ...rest }) => {
+const Card = ({ index, product,cartItemId, ...rest }) => {
+  const [removeFromCart, { isLoading }] = useDeleteFromCartMutation();
   const router = useRouter();
   const user = useSelector((state) => state?.auth?.user);
 
@@ -25,13 +27,22 @@ const Card = ({ index, product, ...rest }) => {
   const favorite = user?.favorites?.find(
     (fav) => fav?.product?._id === product?._id
   );
+  const handleDelete = async () => {
+    try {
+      await removeFromCart(cartItemId).unwrap();
+      toast.success("Item removed from cart");
+      // Optional: You can notify parent here if needed
+    } catch (error) {
+      toast.error("Failed to remove item");
+    }
+  };
 
   return (
     <div
       {...rest}
       className="flex-shrink-0 flex flex-col gap-y-6 group border hover:border-black transition-colors rounded-lg"
     >
-      <div className="relative h-[200px] w-full rounded-lg">
+      <div className="relative h-[200px] w-[200px ] rounded-lg">
         <Image
           src={product?.thumbnail?.url}
           alt={product?.thumbnail?.public_id}
@@ -115,6 +126,16 @@ const Card = ({ index, product, ...rest }) => {
               </span>
             </span>
           </div>
+          {cartItemId &&
+          <div>
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="w-full bg-red-600 py-1 border hover:bg-red-800 border-red-900 p-0.5 rounded-xl text-white"
+            >
+              Delete
+            </button>
+          </div>}
         </div>
       </article>
       <div></div>
@@ -157,17 +178,19 @@ function AddToFavorite({ product }) {
     useAddToFavoriteMutation();
 
   useEffect(() => {
-    if (isLoading) {
-      toast.loading("Adding to favorite...", { id: "addToFavorite" });
-    }
-
-    if (data) {
-      toast.success(data?.description, { id: "addToFavorite" });
-    }
-
-    if (error?.data) {
-      toast.error(error?.data?.description, { id: "addToFavorite" });
-    }
+    const handleAddToFavorite = () => {
+      toast.promise(
+        addToFavorite({ product: product?._id }).unwrap(), // unwrap throws on error
+        {
+          loading: "Adding to favorites...",
+          success: (res) => res?.description || "Added!",
+          error: (err) => err?.data?.description || "Failed to add to favorites",
+        },
+        {
+          id: "addToFavorite",
+        }
+      );
+    };
   }, [isLoading, data, error]);
 
   return (
@@ -191,7 +214,7 @@ function RemoveFromFavorite({ favorite }) {
 
   useEffect(() => {
     if (isLoading) {
-      toast.loading("Adding to favorite...", { id: "addToFavorite" });
+      toast.loading("Remveing from the favorite...", { id: "addToFavorite" });
     }
 
     if (data) {

@@ -100,7 +100,7 @@ const Trending = () => {
           </motion.button>
         </div>
         {!productsLoading && products?.length === 0 && (
-          <p className="text-sm">Oops! No products found!</p>
+          <p className="text-sm">Oops! No products found! </p>
         )}
       </section>
     </Container>

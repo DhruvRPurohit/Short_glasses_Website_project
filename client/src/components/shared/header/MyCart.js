@@ -169,7 +169,7 @@ function Purchase({ cart }) {
         className="px-8 py-2 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow flex flex-row gap-x-2 items-center justify-center"
         onClick={() => createPayment(result)}
       >
-        Purchase
+        Continue Purchaseing.. 
       </button>
     </>
   );

@@ -1,214 +1,94 @@
-
-
 "use client";
 
-import Inform from "@/components/icons/Inform";
-import Trash from "@/components/icons/Trash";
+import ProductCard from "../ProductCard/page";
 import Dashboard from "@/components/shared/layouts/Dashboard";
-import { useDeleteFromCartMutation } from "@/services/cart/cartApi";
-import Image from "next/image";
-import React, { useEffect } from "react";
-import { toast } from "react-hot-toast";
+import Inform from "@/components/icons/Inform";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import Card from "@/components/shared/Card";
 
 const Page = () => {
   const user = useSelector((state) => state.auth.user);
-  const [removeFromCart, { isLoading, data, error }] =
-    useDeleteFromCartMutation();
+  const [cartItems, setCartItems] = useState([]);
 
+  // Initialize from Redux
   useEffect(() => {
-    if (isLoading) {
-      toast.loading("Removing item from cart...", { id: "removeFromCart" });
+    if (user?.cart?.length > 0) {
+      setCartItems(user.cart.map((item) => ({
+        ...item,
+        quantity: item.quantity || 1,
+      })));
     }
+  }, [user?.cart]);
 
-    if (data) {
-      toast.success(data?.description, { id: "removeFromCart" });
-    }
+  // Quantity change handler
+  const handleQuantityChange = (cartItemId, newQuantity) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item._id === cartItemId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
-    if (error?.data) {
-      toast.error(error?.data?.description, { id: "removeFromCart" });
-    }
-  }, [isLoading, data, error]);
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const grandTotal = cartItems.reduce(
+    (acc, item) => acc + item.quantity * item.product.price,
+    0
+  );
 
   return (
     <Dashboard>
-      {user?.cart?.length === 0 ? (
-        <p className="text-sm flex flex-row gap-x-1 items-center justify-center">
-          <Inform /> No Products in Cart List!
-        </p>
+      `{cartItems.length === 0 ? (
+        <div className="flex items-center justify-center h-full p-6">
+          <p className="text-sm flex items-center gap-2 text-gray-500">
+            <Inform /> No Products in Cart List!
+          </p>
+        </div>
       ) : (
-        <section className="w-full h-full">
-          <div className="overflow-x-auto w-full">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-slate-100">
-                <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Thumbnail
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Title
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Quantity
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Price ($)
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Gallery IMAGES
-                  </th>
-                  {/* <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Sizes
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Colors
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Category
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Brand
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Store
-                  </th> */}
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase whitespace-nowrap"
-                  >
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {user?.cart?.map(({ product, quantity, _id }) => (
-                  <tr
-                    key={product?._id}
-                    className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
-                  >
-                    <td className="px-6 py-4">
-                      <Image
-                        src={product?.thumbnail?.url}
-                        alt={product?.thumbnail?.public_id}
-                        height={50}
-                        width={50}
-                        className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap w-60 overflow-x-auto block scrollbar-hide text-sm">
-                        {product?.title}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {quantity}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {product?.price * quantity}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex -space-x-4">
-                        {product?.gallery.map((thumbnail) => (
-                          <Image
-                            key={thumbnail?._id}
-                            src={thumbnail?.url}
-                            alt={thumbnail?.public_id}
-                            height={50}
-                            width={50}
-                            className="h-[50px] w-[50px] rounded-secondary border border-green-500/50 object-cover"
-                          />
-                        ))}
-                      </div>
-                    </td>
-                    {/* <td className="px-6 py-4">
-                      <span className="flex flex-row gap-x-2 scrollbar-hide text-sm">
-                        {product?.variations?.sizes?.map((size) => (
-                          <span key={size} className="border px-1 py-0.5">
-                            {size.toUpperCase()}
-                          </span>
-                        ))}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="flex flex-row gap-x-2 scrollbar-hide text-sm">
-                        {product?.variations?.colors?.map((color) => (
-                          <span
-                            key={color}
-                            style={{
-                              backgroundColor: `#${color}`,
-                              height: "20px",
-                              width: "20px",
-                            }}
-                          />
-                        ))}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {product?.category?.title}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {product?.brand?.title}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="whitespace-nowrap scrollbar-hide text-sm">
-                        {product?.store?.title}
-                      </span>
-                    </td> */}
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button
-                        type="submit"
-                        className="bg-red-50 border border-red-900 p-0.5 rounded-secondary text-red-900"
-                        onClick={() => removeFromCart(_id)}
-                      >
-                        <Trash />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <>
+        <section className="w-full px-2 py-2 flex items-center justify-center">
+          {/* Product Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {cartItems.map(({ product, quantity, _id }) => (
+              <Card
+                key={_id}
+                product={product}
+                quantity={quantity}
+                cartItemId={_id}
+                onQuantityChange={handleQuantityChange}
+              />
+            ))}
           </div>
+
+         
         </section>
+         {/* Cart Summary */}
+          <div className="w-full max-w-md bg-gray-50 p-3 border rounded-lg mt-10 mx-auto shadow-sm">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Cart Summary
+            </h2>
+
+            <div className="text-sm text-gray-700 space-y-2">
+              <p className="flex justify-center">
+                <span>Total Items:</span>
+                <span className="font-medium">{totalItems}</span>
+              </p>
+              <p className="flex justify-center">
+                <span>Grand Total:</span>
+                <span className="font-semibold text-green-600">
+                  ₹{grandTotal.toFixed(2)}
+                </span>
+              </p>
+            </div>
+
+            <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+              Proceed to Checkout
+            </button>
+          </div>
+        </>
       )}
     </Dashboard>
+
   );
 };
 
