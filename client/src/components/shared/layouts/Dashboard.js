@@ -164,7 +164,7 @@ const Dashboard = ({ children }) => {
           {showMenu ? (
             <button
               type="button"
-              className="border p-1 rounded-secondary md:hidden"
+              className="border p-1 rounded-secondary md:block lg:hidden"
               onClick={() => setShowMenu(!showMenu)}
             >
               <svg
@@ -185,7 +185,7 @@ const Dashboard = ({ children }) => {
           ) : (
             <button
               type="button"
-              className="border p-1 rounded-secondary md:hidden"
+              className="border p-1 rounded-secondary md:block lg:hidden"
               onClick={() => setShowMenu(!showMenu)}
             >
               <svg
@@ -224,12 +224,12 @@ const Dashboard = ({ children }) => {
 
         <div className="grid grid-cols-12 gap-x-2 h-full overflow-hidden relative">
           <Sidebar />
-          <div className="md:col-span-9 col-span-12 overflow-y-auto rounded">
+          <div className=" lg:col-span-9 md:col-span-12 col-span-12 overflow-y-auto rounded">
             {children}
           </div>
 
           {showMenu && (
-            <div className="absolute top-0 left-0 h-full overflow-y-auto w-3/4 bg-white z-50  md:hidden ">
+            <div className="absolute top-0 left-0 h-full overflow-y-auto w-3/4 bg-white z-50  md:block lg:hidden ">
               <div className="w-full h-full flex flex-col gap-y-4">
                 {routes.map((route, index) => (
                   <div

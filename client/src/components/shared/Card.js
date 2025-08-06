@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { MdFavorite } from "react-icons/md";
 import Discount from "../icons/Discount";
@@ -17,11 +18,14 @@ import { useDeleteFromCartMutation } from "@/services/cart/cartApi";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import Spinner from "./Spinner";
+import Trash from "../icons/Trash";
 
-const Card = ({ index, product,cartItemId, ...rest }) => {
+const Card = ({ index, product,quantity,onQuantityChange,cartItemId, ...rest }) => {
+
   const [removeFromCart, { isLoading }] = useDeleteFromCartMutation();
   const router = useRouter();
   const user = useSelector((state) => state?.auth?.user);
+  const [qty, setQty] = useState(quantity);
 
   // check if product._id match with favorites array of object's product._id
   const favorite = user?.favorites?.find(
@@ -37,6 +41,13 @@ const Card = ({ index, product,cartItemId, ...rest }) => {
     }
   };
 
+    const handleQtyChange = (delta) => {
+    const newQty = qty + delta;
+    if (newQty >= 1) {
+      setQty(newQty);
+      onQuantityChange(cartItemId, newQty); // 🟢 Inform parent (Page.jsx)
+    }
+  };
   return (
     <div
       {...rest}
@@ -101,15 +112,15 @@ const Card = ({ index, product,cartItemId, ...rest }) => {
           </Badge>
         </div> */}
         <div
-          className="flex flex-col gap-y-4 cursor-pointer h-full"
-          onClick={() =>
-            router.push(
-              `/product?product_id=${
-                product?._id
-              }&product_title=${product?.title
-                .replace(/ /g, "-")
-                .toLowerCase()}}`
-            )
+          className="flex flex-col gap-y-4 cursor-pointer h-full"       
+          onClick={() =>{
+              if(!cartItemId){
+                router.push(
+                `/product?product_id=${product?._id}&product_title=${product?.title
+                .replace(/ /g, '-')
+                .toLowerCase()}`
+              )}
+            }
           }
         >
           <h2 className="line-clamp-2 h-full">{product?.title}</h2>
@@ -126,15 +137,30 @@ const Card = ({ index, product,cartItemId, ...rest }) => {
               </span>
             </span>
           </div>
+
+          {/* This Part only render when in the cart section */}
           {cartItemId &&
-          <div>
-            <button
-              type="button"
-              onClick={handleDelete}
-              className="w-full bg-red-600 py-1 border hover:bg-red-800 border-red-900 p-0.5 rounded-xl text-white"
-            >
-              Delete
-            </button>
+          <div className="w-full flex justify-between items-center">
+            <div className="flex justify-center items-center gap-x-2 border px-2 py-1 rounded-lgs">
+              <button
+                className="p-1 border rounded text-gray-600 hover:bg-gray-100 disabled:opacity-40"
+                onClick={() => handleQtyChange(-1)}
+                disabled={qty === 1}
+              >
+                <AiOutlineMinus className="w-4 h-4" />
+              </button>
+              <span className="w-10 text-center font-medium text-sm">{qty}</span>
+              <button
+                className="p-1 border rounded text-gray-600 hover:bg-gray-100"
+                onClick={() => handleQtyChange(1)}
+              >
+                <AiOutlinePlus className="w-4 h-4" />
+              </button>
+             
+            </div>
+              <button type="button" onClick={handleDelete} className="bg-red-50 border border-red-900 p-0.5 rounded-secondary text-red-900 " >
+                <Trash/>
+              </button>
           </div>}
         </div>
       </article>

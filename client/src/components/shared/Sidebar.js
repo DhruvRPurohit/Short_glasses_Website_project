@@ -155,7 +155,7 @@ const Sidebar = () => {
   }
 
   return (
-   <section className="col-span-12 md:col-span-4 lg:col-span-3 overflow-hidden bg-white z-50 min-w-full max-w-lg lg:max-w-md px-2 overflow-y-auto md:block hidden">
+   <section className="col-span-12 md:col-span-4 lg:col-span-3 overflow-hidden bg-white z-50 min-w-full max-w-lg lg:max-w-md px-2 overflow-y-auto lg:block hidden">
 
       <div className="w-full h-full flex flex-col gap-y-4">
         {routes.map((route, index) => (

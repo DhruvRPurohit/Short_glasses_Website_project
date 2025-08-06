@@ -1,6 +1,5 @@
 "use client";
 
-import ProductCard from "../ProductCard/page";
 import Dashboard from "@/components/shared/layouts/Dashboard";
 import Inform from "@/components/icons/Inform";
 import { useSelector } from "react-redux";
@@ -21,6 +20,7 @@ const Page = () => {
     }
   }, [user?.cart]);
 
+  console.log(cartItems)
   // Quantity change handler
   const handleQuantityChange = (cartItemId, newQuantity) => {
     setCartItems((prev) =>
@@ -48,7 +48,8 @@ const Page = () => {
         <>
         <section className="w-full px-2 py-2 flex items-center justify-center">
           {/* Product Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {cartItems.map(({ product, quantity, _id }) => (
               <Card
                 key={_id}
@@ -62,7 +63,8 @@ const Page = () => {
 
          
         </section>
-         {/* Cart Summary */}
+            {/* Cart Summary */}
+           
           <div className="w-full max-w-md bg-gray-50 p-3 border rounded-lg mt-10 mx-auto shadow-sm">
             <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
               Cart Summary
