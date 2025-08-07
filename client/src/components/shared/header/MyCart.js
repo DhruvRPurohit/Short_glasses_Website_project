@@ -1,4 +1,4 @@
-
+"use client"
 
 import Cart from "@/components/icons/Cart";
 import React, { useEffect, useState } from "react";
@@ -10,6 +10,8 @@ import { useDeleteFromCartMutation } from "@/services/cart/cartApi";
 import { toast } from "react-hot-toast";
 import Inform from "@/components/icons/Inform";
 import { useCreatePaymentMutation } from "@/services/payment/paymentApi";
+import { useRouter } from "next/navigation";
+
 
 const MyCart = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,7 +147,7 @@ function Purchase({ cart }) {
       toast.error(error?.data?.description, { id: "createPayment" });
     }
   }, [isLoading, data, error]);
-
+    
   const result = cart.map(
     ({
       product: { title, thumbnail, price, summary, _id: pid },
@@ -161,13 +163,14 @@ function Purchase({ cart }) {
       cid,
     })
   );
+    const router = useRouter()
 
   return (
     <>
       <button
         type="button"
         className="px-8 py-2 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow flex flex-row gap-x-2 items-center justify-center"
-        onClick={() => createPayment(result)}
+        onClick={() => router.push('/dashboard/buyer/my-cart') }
       >
         Continue Purchaseing.. 
       </button>

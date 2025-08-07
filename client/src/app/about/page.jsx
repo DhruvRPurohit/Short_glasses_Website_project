@@ -3,7 +3,6 @@ import React from 'react'
 import Image from "next/image";
 import Header from "../../components/shared/header/Header";
 import { motion } from 'framer-motion';
-// import Header from './Header'
 
 const containerVariants = {
   hidden: {},
@@ -106,7 +105,6 @@ const About = () => {
         </motion.div>
 
       </div>
-
     </div>
     </>
   )
