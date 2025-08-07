@@ -9,7 +9,7 @@ import { useGetProductsQuery } from "@/services/product/productApi";
 import ProductCard from "../shared/skeletonLoading/ProductCard";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
-
+import { useRouter } from 'next/navigation';
 const containerVariants = {
   hidden: {},
   visible: {
@@ -46,7 +46,8 @@ const NewArrivals = () => {
       });
     }
   }, [productsError]);
-
+  const router = useRouter();
+  
   return (
     <Container>
       <section className="flex flex-col gap-y-10">
@@ -65,7 +66,15 @@ const NewArrivals = () => {
             <>
               {[1, 2, 3, 4].map((_, index) => (
                 <motion.div key={index} variants={cardVariants}>
-                  <ProductCard />
+                  <ProductCard  onClick={() =>
+                      router.push(
+                        `/product?product_id=${
+                          product?._id
+                        }&product_title=${product?.title
+                          .replace(/ /g, "-")
+                          .toLowerCase()}}`
+                      ) 
+                    } />
                 </motion.div>
               ))}
             </>
@@ -73,7 +82,17 @@ const NewArrivals = () => {
             <>
               {products?.slice(0, 4)?.map((product, index) => (
                 <motion.div key={index} variants={cardVariants}>
-                  <Card index={index} product={product} />
+                  <Card index={index} product={product}  
+                    onClick={() =>
+                      router.push(
+                        `/product?product_id=${
+                          product?._id
+                        }&product_title=${product?.title
+                          .replace(/ /g, "-")
+                          .toLowerCase()}}`
+                      ) 
+                    }
+                  />
                 </motion.div>
               ))}
             </>

@@ -1,17 +1,4 @@
-/**
- * Title: Write a program using JavaScript on Page
- * Author: Hasibul Islam
- * Portfolio: https://devhasibulislam.vercel.app
- * Linkedin: https://linkedin.com/in/devhasibulislam
- * GitHub: https://github.com/devhasibulislam
- * Facebook: https://facebook.com/devhasibulislam
- * Instagram: https://instagram.com/devhasibulislam
- * Twitter: https://twitter.com/devhasibulislam
- * Pinterest: https://pinterest.com/devhasibulislam
- * WhatsApp: https://wa.me/8801906315901
- * Telegram: devhasibulislam
- * Date: 14, January 2024
- */
+
 
 "use client";
 
@@ -199,14 +186,17 @@ const Page = () => {
           </div>
 
           {/* submit button */}
-          <input
-            type="submit"
-            value="Update Profile"
-            className="py-2 border border-black rounded bg-black hover:bg-black/90 text-white transition-colors drop-shadow cursor-pointer text-sm"
-          />
+          <div className="w-full flex md:justify-end md:items-end justify-center items-center p-2 gap-5">
+             <DeleteUser />
+              <input
+                type="submit"
+                value="Update Profile"
+                className="p-2  border border-black rounded bg-green-600 hover:bg-green-800 text-white transition-colors drop-shadow cursor-pointer text-sm"
+              />
+          </div>
+          
         </form>
 
-        <DeleteUser />
       </section>
     </Dashboard>
   );
@@ -235,10 +225,10 @@ function DeleteUser() {
     <>
       <button
         type="button"
-        className="py-2 border border-black rounded bg-red-900 hover:bg-red-900/90 text-white transition-colors drop-shadow cursor-pointer text-sm"
+        className="p-2 border border-black rounded bg-red-600 hover:bg-red-800 text-white transition-colors drop-shadow cursor-pointer text-sm"
         onClick={() => setIsOpen(true)}
       >
-        Delete User
+        Delete Profile
       </button>
 
       {isOpen && (

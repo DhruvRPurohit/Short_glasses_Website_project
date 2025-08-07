@@ -35,7 +35,7 @@ const Banner2 = ({ className }) => {
                 whileHover={{ scale: 1.10 }}
                 whileTap={{ scale: 0.90 }}
                 className="px-8 py-4 border border-black rounded-secondary bg-black hover:bg-black/90 text-white transition-colors drop-shadow w-fit mt-4"
-                onClick={() => router.push("") }
+                onClick={() => router.push("/about") }
               >
                 Discover More
               </motion.button>
